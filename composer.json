@@ -1,8 +1,9 @@
 {
-    "name": "phdescriptors/phscriptors",
+    "name": "phdescriptors/phdescriptors",
     "description": "The common descriptor library that used in http communication.",
     "type": "Library",
     "license": "MIT",
+	"keywords": ["descriptor", "http"],
     "authors": [
         {
             "name": "ouranoshong",

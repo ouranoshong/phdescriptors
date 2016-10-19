@@ -1,2 +1,2 @@
 # phdescriptors
-The common descriptor libuary that used in http communication.
+The common descriptor library that used in http communication.

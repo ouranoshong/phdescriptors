@@ -1,0 +1,22 @@
+{
+    "name": "phdescriptors/phscriptors",
+    "description": "The common descriptor library that used in http communication.",
+    "type": "Library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ouranoshong",
+            "email": "ouranoshong@outlook.com"
+        }
+    ],
+    "require": {},
+
+    "autoload": {
+        "psr-4": {
+            "PhDescriptors\\": "./libs"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.6"
+    }
+}

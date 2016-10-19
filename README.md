@@ -4,3 +4,9 @@
 
 # phdescriptors
 The common descriptor library that used in http communication.
+
+
+### Installation
+```bash
+composer require phdescriptors/phdescriptors
+```

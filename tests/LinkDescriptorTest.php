@@ -33,6 +33,10 @@ class LinkDescriptorTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($link_code, $Link->link_code);
         $this->assertEquals($refering_url, $Link->refering_url);
 
+        $LinkOnlyUrlRebuild = new \PhDescriptors\LinkDescriptor($url_rebuild);
+
+        $this->assertEquals($url_rebuild, $LinkOnlyUrlRebuild->url_rebuild);
+        $this->assertNull($LinkOnlyUrlRebuild->link_raw);
     }
 
 }

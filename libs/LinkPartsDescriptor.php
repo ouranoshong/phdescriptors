@@ -7,6 +7,8 @@
  */
 
 namespace PhDescriptors;
+use phpDocumentor\Reflection\DocBlock\Tags\Link;
+use PhUtils\LinkUtil;
 
 /**
  * Class LinkPartsDescriptor
@@ -71,20 +73,24 @@ class LinkPartsDescriptor
     public $auth_password;
 
     /**
-     *
-     *
-     * @param string $url
+     * @var string
      */
-    public function __construct($url = '')
+    public $fragment;
+
+    /**
+     * LinkPartsDescriptor constructor.
+     * @param string $url
+     * @param \PhUtils\LinkUtil $parser
+     */
+    public function __construct($url = '', $parser = LinkUtil::class)
     {
         if ($url) {
-            $this->init($url);
+            $this->init($parser::parse($url));
         }
     }
 
     /**
      * @param array $parts
-     *
      * @return $this
      */
     public function init($parts)
@@ -98,6 +104,7 @@ class LinkPartsDescriptor
         $this->port = $parts['port'];
         $this->auth_username = $parts['auth_username'];
         $this->auth_password = $parts['auth_password'];
+        $this->fragment = $parts['fragment'];
 
         return $this;
     }

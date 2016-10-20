@@ -15,4 +15,9 @@ class CookieDescriptorTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals('VISITOR', $Cookie->name);
     }
+
+    public function testInit() {
+        $Cookie = new \PhDescriptors\CookieDescriptor();
+        $Cookie->init($this->source_url, 'VISITOR', '4c63394c2d82e31552001a58');
+    }
 }

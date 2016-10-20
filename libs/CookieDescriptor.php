@@ -88,7 +88,7 @@ class CookieDescriptor
      * @param string $path       Cookie-path
      * @param string $domain     Cookie-domain
      */
-    public function __construct($source_url, $name, $value, $expires = null, $path = null, $domain = null)
+    public function __construct($source_url = null, $name = null, $value = null, $expires = null, $path = null, $domain = null)
     {
         // For cookie-specs, see e.g. http://curl.haxx.se/rfc/cookie_spec.html
         $this->init($source_url, $name, $value, $expires, $path, $domain);

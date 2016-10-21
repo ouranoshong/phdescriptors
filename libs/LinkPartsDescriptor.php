@@ -85,26 +85,29 @@ class LinkPartsDescriptor
     public function __construct($url = '', $parser = LinkUtil::class)
     {
         if ($url) {
-            $this->init($parser::parse($url));
+            $this->init($parser::parse($url, $parser));
         }
     }
 
     /**
-     * @param array $parts
-     * @return $this
+     * @param string|array $parts
+     * @param \PhUtils\LinkUtil $parser
+     *
+     * @return string $this
      */
-    public function init($parts)
+    public function init($parts, $parser = LinkUtil::class)
     {
-        $this->protocol = $parts['protocol'];
-        $this->host = $parts['host'];
-        $this->path = $parts['path'];
-        $this->file = $parts['file'];
-        $this->query = $parts['query'];
-        $this->domain = $parts['domain'];
-        $this->port = $parts['port'];
-        $this->auth_username = $parts['auth_username'];
-        $this->auth_password = $parts['auth_password'];
-        $this->fragment = $parts['fragment'];
+
+        if (is_string($parts) && filter_var($parts, FILTER_VALIDATE_URL)) {
+            $parts = $parser::parse($parts);
+        }
+
+        /**@var $Property \ReflectionProperty */
+        foreach((new \ReflectionObject($this))->getProperties(\ReflectionProperty::IS_PUBLIC) as $Property) {
+            if ((!$Property->getValue($this)) && isset($parts[$Property->getName()])) {
+                $Property->setValue($this, $parts[$Property->getName()]);
+            }
+        }
 
         return $this;
     }

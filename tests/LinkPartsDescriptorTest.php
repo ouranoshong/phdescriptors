@@ -31,6 +31,17 @@ class LinkPartsDescriptorTest  extends \PHPUnit\Framework\TestCase
          $this->assertEquals($this->path, $LinkParts->path);
          $this->assertEquals($this->file, $LinkParts->file);
 
+
+         $LinkPartsUrl = new \PhDescriptors\LinkPartsDescriptor();
+         $LinkPartsUrl->init($this->generateUrl());
+
+         $this->assertEquals($this->domain, $LinkPartsUrl->domain);
+         $this->assertEquals($this->host, $LinkPartsUrl->host);
+         $this->assertEquals($this->protocol, $LinkPartsUrl->protocol);
+         $this->assertEquals($this->query, $LinkPartsUrl->query);
+         $this->assertEquals($this->path, $LinkPartsUrl->path);
+         $this->assertEquals($this->file, $LinkPartsUrl->file);
+
          $LinkPartsNothing = new \PhDescriptors\LinkPartsDescriptor();
 
          $this->assertEquals('', $LinkPartsNothing->host);
